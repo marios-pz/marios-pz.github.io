@@ -1,0 +1,75 @@
+.card {
+    width: 80%; 
+    margin-top: 3%;
+}
+
+.content ul li img, .card , footer p {
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.card-body {
+    float: right;
+}
+
+.card, .certs, footer p {
+    text-align: center;
+}
+
+.certs .tools, .certs h3 {
+    margin-left: -8%;
+}
+
+
+.tools a { text-decoration: none; }
+
+.card-body img {
+    width: 25%; 
+    float: left;
+    margin-right: 20px;
+}
+
+.description {
+    text-align: left;
+}
+
+.description a {
+    text-decoration: none;
+    color:rgb(87, 143, 255);
+}
+
+.card-body h5 {
+    margin-left: 10px;
+}
+
+.card-body p {
+    margin-left: 20px;
+}
+
+.d-flex a, .content ul h4 {
+    margin-left: 1%;
+}
+
+.tools {
+    list-style: none;
+}
+.tools li {
+    display: inline;
+}
+
+.content {
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.content ul h4 {
+    font-size: 14px;
+}
+
+.content ul li img {
+    width: 10%;
+    margin-right: 3%;
+}
+
+
+footer p { margin-top: 4%; margin-bottom: 4%;}
