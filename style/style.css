@@ -2,7 +2,6 @@
 * {
     font-family: 'Roboto Mono';
     font-size: 16px;
-    font-weight: bold;
 }
 html, body {
     background-color: #023047;
@@ -45,4 +44,10 @@ a {
 
 .projects {
     padding-left: 8%;
+}
+
+@media (max-width: 1020px) {
+  .github {
+    display: none;
+  }
 }
