@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>traffic light circuit</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/menu.css">
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>traffic light circuit</h1>
+
+        <img src="https://media.discordapp.net/attachments/1104034184357494886/1104288967228137472/20230506_090854.jpg?width=1194&height=892" alt="picture" />
+
+        <h2>purpose</h2>
+        <p>The purpose of this project is to create a simple traffic light controller using a rp2040 microcontroller and a few LEDs. The traffic light controller will cycle through three different LED colors (red, yellow, and green) in a repeating pattern to simulate a real traffic light.</p>
+
+        <h2>materials</h2>
+        <ul>
+            <li>a rp2040 microcontroller loaded with circuit python</li>
+            <li>breadboard</li>
+            <li>3 x 3mm LEDs (red, yellow, green)</li>
+            <li>3 x resistors (it's better than nothing)</li>
+            <li>4 x male jumper wires</li>
+        </ul>
+
+        <h2>circuit datagram</h2>
+        <img src="https://media.discordapp.net/attachments/1104034184357494886/1104296506590253066/Screenshot_from_2023-05-06_09-32-51.png" alt="datagram" />
+
+        <p>GPIOs are basically switches so it should be fine ¯\_(ツ)_/¯</p>
+
+        <h2>calculations</h2>
+        <p>We will apply Ohm's law to find what resistance we need for each.</p>
+        <pre>
+green -&gt; 2.1V =&gt; (3.3 - 2.1) / 0.02 = 60Ω
+yellow -&gt; 1.8~2.2V =&gt; (3.3 - 1.8) / 0.02 = 75Ω
+red -&gt; 1.8v =&gt; (3.3 - 1.8) / 0.02 = 75Ω
+        </pre>
+
+        <h2>code</h2>
+        <p>I choose to use gp0, gp1, and gp2 as my pins. You can easily change these pins by modifying the numbers:</p>
+        <pre>
+import time
+import board
+import digitalio
+
+def main():
+    green_led = digitalio.DigitalInOut(board.GP0)
+    yellow_led = digitalio.DigitalInOut(board.GP1)
+    red_led = digitalio.DigitalInOut(board.GP2)
+
+    green_led.direction = digitalio.Direction.OUTPUT
+    yellow_led.direction = digitalio.Direction.OUTPUT
+    red_led.direction = digitalio.Direction.OUTPUT
+
+    green_latency: float = 4.0
+    yellow_latency: float = 1.0
+    red_latency: float = 4.0
+
+    while True:
+        green_led.value = True
+        time.sleep(green_latency)
+        green_led.value = False
+        yellow_led.value = True
+        time.sleep(yellow_latency)
+        yellow_led.value = False
+        red_led.value = True
+        time.sleep(red_latency)
+        red_led.value = False
+
+main()
+        </pre>
+        <p>And voila, just like that I made my first circuit project.</p>
+
+        <h2>references</h2>
+        <ul>
+            <li><a href="https://www.waveshare.com/wiki/RP2040-Zero">https://www.waveshare.com/wiki/RP2040-Zero</a></li>
+            <li><a href="https://learn.adafruit.com/circuitpython-digital-inputs-and-outputs/digital-outputs">https://learn.adafruit.com/circuitpython-digital-inputs-and-outputs/digital-outputs</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/rp2040-thing-plus-hookup-guide/hardware-overview">https://learn.sparkfun.com/tutorials/rp2040-thing-plus-hookup-guide/hardware-overview</a></li>
+            <li>I watched a lot of <a href="https://www.youtube.com/@EngineeringMindset">https://www.youtube.com/@EngineeringMindset</a></li>
+        </ul>
+    </div>
+</body>
+</html>

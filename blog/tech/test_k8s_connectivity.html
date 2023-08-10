@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>testing network connectivity within a k8s cluster</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../style/menu.css">
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>testing network connectivity within a k8s cluster</h1>
+
+        <p>When working with applications and services within a Kubernetes cluster, it's important to ensure that network connectivity is established correctly. Let's break down the provided command step by step, explaining each component in detail.</p>
+
+        <pre>
+kubectl run --namespace="namespace-name" --rm -it pod-name --image=busybox --restart=Never -- sh -c 'add command here'
+        </pre>
+
+        <h3><code>kubectl run</code></h3>
+        <p>This command is used to create and run resources in Kubernetes.</p>
+
+        <h3><code>--namespace=</code></h3>
+        <p>The flag specifies the namespace in which the pod will be created. Namespaces help organize and isolate resources within a Kubernetes cluster.</p>
+
+        <h3><code>--rm</code></h3>
+        <p>The flag indicates that the pod should be automatically removed after it finishes executing. The "<code>--rm</code>" stands for "remove".</p>
+
+        <h3><code>-it</code></h3>
+        <p>These two flags, when used together, allocate a pseudo-tty and enable interactive mode. This allows for an interactive session with the pod, making it easier to perform actions and view the output.</p>
+
+        <h3><code>pod-name</code></h3>
+        <p>This is the name assigned to the pod.</p>
+
+        <h3><code>--image=busybox</code></h3>
+        <p>The flag specifies the container image that will be used for the pod. Here, we are using the "busybox" container image. Busybox is a lightweight container image that provides essential Unix tools.</p>
+
+        <p>Here are some of the networking debugging tools commonly found in Busybox:</p>
+
+        <ul>
+            <li><code>ifconfig</code>: Used to configure network interfaces, display their status, and modify network interface parameters.</li>
+            <li><code>route</code>: Used to view and manipulate the IP routing table.</li>
+            <li><code>ping</code>: Used to send ICMP echo request packets to a specified host and measure the round-trip time.</li>
+            <li><code>arp</code>: Used to manipulate the system's Address Resolution Protocol cache, view ARP entries, and set static ARP mappings.</li>
+            <li><code>netstat</code>: Used to display various network-related information, such as network connections, routing tables, and interface statistics.</li>
+            <li><code>telnet</code>: A client program used to establish Telnet sessions with remote hosts for interactive communication.</li>
+            <li><code>nc</code> (Netcat): A versatile networking utility that can establish TCP or UDP connections, perform port scanning, and transfer data between hosts.</li>
+            <li><code>wget</code>: Used to retrieve files from web servers using various protocols, such as HTTP, HTTPS, and FTP.</li>
+            <li><code>curl</code>: A command-line tool used for transferring data with various protocols, including HTTP, HTTPS, FTP, and more.</li>
+            <li><code>nslookup</code> or <code>dig</code>: DNS (Domain Name System) utilities used to perform DNS queries and retrieve information about DNS records.</li>
+        </ul>
+
+        <h3><code>--restart=never</code></h3>
+        <p>The flag defines the restart policy for the pod. By setting it to "never", the pod will not be restarted automatically if it terminates.</p>
+
+        <h3><code>-- sh -c '</code></h3>
+        <p>This part of the command specifies the command to run within the pod.</p>
+
+        <p>By executing this command, a temporary pod named <strong>test-client</strong> will be created in the specified namespace, using the <strong>busybox</strong> image. An interactive session will be opened, allowing you to execute commands to test the connection between the pods. After the session ends, the pod will be automatically removed due to the <strong>--rm</strong> flag.</p>
+    </div>
+</body>
+</html>
