@@ -6,30 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../style/style.css">
-    <link rel="stylesheet" href="../../style/menu.css">
+    <link rel="stylesheet" href="../blog.css">
 </head>
 <body>
     <nav class="menu">
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="../index.html">return to blog</a></li>
         </ul>
     </nav>
 
     <div class="content">
         <h1>dependabot: code analysis and dependency management</h1>
-        <img src="https://media.discordapp.net/attachments/1104034184357494886/1104034205089923092/image.png" alt="ill be back" />
+        <img src="../../assets/blog/dependabot_1.png" alt="ill be back" />
 
         <h2>What is Dependabot?</h2>
-        <p>Dependabot is a GitHub tool that automates the process of updating dependencies in your code base. It analyzes your project's dependencies and alerts you when it finds new versions available.</p>
-        <p>It can update dependencies for a wide range of package managers. Some of the package managers I use include:</p>
-        <pre>
-rust: cargo
-go: gomod
-python: pip
-svelte: npm
-        </pre>
-
+        <p> Dependabot is a Game Changer dependency management tool for GitHub repositories. It analyzes your repo and alerts when there is a upgrade available or a vulnerability has been spotted. </p>
         <h2>How does Dependabot work?</h2>
+       
         <p>When you enable Dependabot for your repository, it starts by scanning your codebase for outdated dependencies. It then creates a pull request with the updated dependencies, which you can review and merge into your codebase.</p>
         <p>Dependabot uses a set of default update strategies for each package manager it supports. These strategies include:</p>
         <ul>
@@ -38,26 +31,26 @@ svelte: npm
             <li>Lockfile updates: Dependabot updates the lockfile to ensure that all dependencies are up-to-date.</li>
         </ul>
 
-        <h2>How to apply Dependabot to your repository</h2>
+        <h2>Enabling Dependabot</h2>
         <p>Create a <code>.github/workflows/dependabot.yaml</code> file and add the following YAML:</p>
         <pre>
-version: 2
-updates:
-  - package-ecosystem: "package-manager-name"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+        version: 2
+        updates:
+          - package-ecosystem: "package-manager-name" # cargo, pip, gomod, npm etc
+            directory: "/"
+            schedule:
+              interval: "daily"
+
         </pre>
-        <p>In this example, we tell Dependabot to search in the root of the repo once every week. Note: Avoid daily intervals unless it’s absolutely necessary.</p>
+        <p>
+        On GitHub.com, navigate to the main page of the repository. Under your repository name, click "Settings".
+        In the "Security" section of the sidebar, click "Code security and analysis", enable "Dependency graph",
+        and after that enable what you wish to use. <br> <br>
 
-        <h2>How to enable Dependabot</h2>
-        <p>On GitHub.com, navigate to the main page of the repository. Under your repository name, click "Settings".</p>
-        <img src="https://docs.github.com/assets/cb-28266/mw-1440/images/help/repository/repo-actions-settings.webp" alt="github" />
-        <p>If you cannot see the "Settings" tab, select the dropdown menu, then click "Settings".</p>
-        <p>In the "Security" section of the sidebar, click "Code security and analysis", enable "Dependency graph", and after that enable what you wish to use.</p>
-
-        <h2>When do we upgrade</h2>
-        <p>Taking into account that your main branch is in a working state, merge Dependabot's PR on a testing branch.</p>
+        By using Dependabot, you can ensure that your codebase is always up-to-date, secure,
+        and free from vulnerabilities <i>(well most of them)</i>. This allows you to focus more on developing features
+        and less on manual dependency tracking, ultimately improving your development workflow.
+        </p>
     </div>
 </body>
 </html>
